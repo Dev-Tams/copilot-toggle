@@ -1,71 +1,84 @@
 # copilot-toggle README
 
-This is the README for your extension "copilot-toggle". After writing up a brief description, we recommend including the following sections.
+**copilot-toggle** is a simple VS Code extension that lets you quickly **enable or disable GitHub Copilot’s autocomplete feature** from the status bar or Command Palette — without turning off Copilot entirely.  
+
+This is useful if you want Copilot for features like commit suggestions or chat, but don’t want inline code completions interfering while you type.
+
+---
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- Adds a **status bar button** to toggle Copilot autocomplete:
+  - **Copilot: On** → Autocomplete enabled.
+  - **Copilot: Off** → Autocomplete disabled.
+- Adds a **command** in the Command Palette:  
+  `Toggle Copilot Autocomplete`
+- Keeps the toggle state visible in the status bar at all times.
 
-For example if there is an image subfolder under your extension project workspace:
+### Screenshots
 
-\!\[feature X\]\(images/feature-x.png\)
+_Status bar toggle button:_  
+![status bar toggle](images/statusbar-toggle.png)
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+_Command Palette:_  
+![command palette](images/command-palette.png)
+
+---
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- [GitHub Copilot extension](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot) must be installed in VS Code.
+- No additional configuration is required.
+
+---
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+This extension does not add custom settings.  
+Instead, it toggles the built-in Copilot autocomplete setting:  
 
-For example:
+- `github.copilot.editor.enableAutoCompletions` → **true/false**
 
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+---
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+- The status bar may sometimes display stale state if settings are changed outside the toggle (for example, if you disable Copilot manually). Re-toggling will sync it back.  
+- Requires the Copilot extension to be installed — otherwise, the command will have no effect.  
+
+---
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
-
 ### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+- Initial release of `copilot-toggle`.
+- Added status bar button and command palette integration.
 
 ---
 
 ## Following extension guidelines
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
+This extension follows the official VS Code extension guidelines.  
+For best practices and contributing, see:  
 * [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+
+---
 
 ## Working with Markdown
 
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
+If you want to tweak this README for your own fork, here are some quick tips:
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
+* Split the editor (`Ctrl+\` on Windows/Linux, `Cmd+\` on macOS).
+* Toggle preview (`Ctrl+Shift+V` on Windows/Linux, `Cmd+Shift+V` on macOS).
+* Use `Ctrl+Space` to view Markdown snippets.
+
+---
 
 ## For more information
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+- [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)  
+- [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)  
 
-**Enjoy!**
+---
+
+**Enjoy coding with Copilot — only when you want it**
