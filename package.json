@@ -9,15 +9,27 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": ["onStartupFinished"],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "copilot-toggle.helloWorld",
-        "title": "Hello World"
+      "command": "extension.toggleCopilotAutocomplete",
+      "title": "Toggle Copilot Autocomplete"
+
       }
-    ]
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Copilot Toggle",
+      "properties": {
+        "github.copilot.editor.enableAutoCompletions": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable or disable GitHub Copilot inline autocompletions."
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
