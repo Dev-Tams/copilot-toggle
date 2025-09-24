@@ -18,10 +18,10 @@ This is useful if you want Copilot for features like commit suggestions or chat,
 ### Screenshots
 
 _Status bar toggle button:_  
-![status bar toggle](images/statusbar-toggle.png)
+![status bar toggle](src/images/statusbar-toggle.png)
 
 _Command Palette:_  
-![command palette](images/command-palette.png)
+![command palette](src/images/command-palette.png)
 
 ---
 
