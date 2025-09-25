@@ -3,8 +3,13 @@
   "displayName": "copilot-toggle",
   "description": "Toggle GitHub Copilot autocomplete on and off",
   "version": "0.0.1",
+  "publisher": "tammyalemu",
   "engines": {
     "vscode": "^1.104.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dev-Tams/copilot-toggle.git"
   },
   "categories": [
     "Other"
