@@ -2,6 +2,11 @@
   "name": "copilot-toggle",
   "displayName": "copilot-toggle",
   "description": "Toggle GitHub Copilot autocomplete on and off",
+  "icon": "icon.png",
+  "author": {
+    "name": "Tammy Alemu",
+    "url": "https://github.com/Dev-Tams"
+  },
   "version": "0.0.1",
   "publisher": "tammyalemu",
   "engines": {

@@ -1,46 +1,37 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 
 export function activate(context: vscode.ExtensionContext) {
-  const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
-  statusBarItem.command = 'extension.toggleCopilotAutocomplete';
-  context.subscriptions.push(statusBarItem);
+    const statusBar = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
+    statusBar.command = 'copilot-toggle.toggle';
+    context.subscriptions.push(statusBar);
 
-  const updateStatusBar = () => {
-    const config = vscode.workspace.getConfiguration();
-    const current = config.get<boolean>('github.copilot.editor.enableAutoCompletions', true);
-    statusBarItem.text = current ? '🤖 Copilot Auto: On' : '❌ Copilot Auto: Off';
-    statusBarItem.tooltip = 'Toggle Copilot Autocomplete';
-    statusBarItem.show();
-  };
+    const updateStatus = (enabled: boolean) => {
+        statusBar.text = enabled ? 'Copilot: On' : 'Copilot: Off';
+        statusBar.show();
+    };
 
-  const disposable = vscode.commands.registerCommand('extension.toggleCopilotAutocomplete', async () => {
-    const config = vscode.workspace.getConfiguration();
-    const current = config.get<boolean>('github.copilot.editor.enableAutoCompletions', true);
+    const disposable = vscode.commands.registerCommand('copilot-toggle.toggle', async () => {
+        const config = vscode.workspace.getConfiguration('github.copilot');
+        const current = config.get<{ [key: string]: boolean }>('enable') || {};
+        const currentAll = current['*'] ?? true; // default is true if not set
 
-    await config.update(
-      'github.copilot.editor.enableAutoCompletions',
-      !current,
-      vscode.ConfigurationTarget.Global
-    );
+        // Flip the global "*" value
+        current['*'] = !currentAll;
 
-    vscode.window.showInformationMessage(
-      `Copilot autocomplete ${!current ? 'enabled ✅' : 'disabled ❌'}`
-    );
+        await config.update('enable', current, vscode.ConfigurationTarget.Global);
+        updateStatus(!currentAll);
 
-    updateStatusBar();
-  });
+        vscode.window.showInformationMessage(
+            `Copilot autocompletions ${!currentAll ? 'enabled' : 'disabled'}`
+        );
+    });
 
-  context.subscriptions.push(disposable);
-  updateStatusBar();
+    context.subscriptions.push(disposable);
 
-  vscode.workspace.onDidChangeConfiguration((e) => {
-    if (e.affectsConfiguration('github.copilot.editor.enableAutoCompletions')) {
-      updateStatusBar();
-    }
-  });
+    // Initialize status bar based on current value
+    const config = vscode.workspace.getConfiguration('github.copilot');
+    const current = config.get<{ [key: string]: boolean }>('enable') || {};
+    updateStatus(current['*'] ?? true);
 }
 
-// This method is called when your extension is deactivated
 export function deactivate() {}
