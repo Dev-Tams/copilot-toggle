@@ -7,7 +7,7 @@
     "name": "Tammy Alemu",
     "url": "https://github.com/Dev-Tams"
   },
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "tammyalemu",
   "engines": {
     "vscode": "^1.104.0"
@@ -19,14 +19,15 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": ["onStartupFinished"],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-      "command": "extension.toggleCopilotAutocomplete",
-      "title": "Toggle Copilot Autocomplete"
-
+        "command": "extension.toggleCopilotAutocomplete",
+        "title": "Toggle Copilot Autocomplete"
       }
     ],
     "configuration": {
