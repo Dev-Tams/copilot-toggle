@@ -6,6 +6,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
+
+## [1.0.3] - 2025-10-04
+### Added
+- Added keyboard shortcut support for quickly toggling Copilot:
+  - **Windows/Linux:** `Ctrl+Alt+C`
+  - **macOS:** `Cmd+Alt+C`
+- Shortcut only works when an editor is focused to avoid conflicts.
+- Internal improvements to command registration and extension activation.
+
+### Changed
+- Updated documentation to include keyboard shortcut usage instructions.
+
+---
+
 ## [1.0.2] - 2025-09-27
 ### Fixed
 - Fixed an issue where Copilot inline suggestions were still visible after toggling off.
@@ -23,6 +37,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - Improved status bar toggle responsiveness.
+
 ---
 
 ## [1.0.0] - 2025-09-24
